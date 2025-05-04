@@ -26,4 +26,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: flaskapp:v1
+          tags: madan1512/flaskapp:1.0
