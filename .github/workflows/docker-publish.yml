@@ -5,8 +5,11 @@ on:
     branches: [ main ]  # Trigger on push to the main branch
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  build: 
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest,windows-latest,macOS-latest]
 
     steps:
       - name: Checkout code
@@ -27,3 +30,4 @@ jobs:
           context: .
           push: true
           tags: madan1512/flaskapp:1.0
+
