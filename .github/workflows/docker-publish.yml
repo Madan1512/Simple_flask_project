@@ -1,0 +1,31 @@
+name: Build and push Docker Image to Docker Hub
+
+on:
+    push:
+        branches: [main]
+
+
+jobs:
+    build-and-push:
+        runs-on: ubuntu-latest
+        
+        steps:
+         - name: Checkout repository
+           uses: actions/checkout@v3
+
+         - name: Set up Docker buildx
+           uses: docker/setup-buildx-action@v3
+
+         - name: Login to Docker Hub
+           uses: dokcer/login-action@v2
+
+           with:
+            username: ${{ secrets.madan1512 }}
+            password: ${{ secrets.Madan@2003}}
+         - name: Build Docker Image
+           run: docker build -t ${{ secrets.madan1512 }}/learn_docker
+
+         - name: Push Docker image
+           run: docker push ${{ secrets.madan1512 }}/learn_docker
+            
+    
